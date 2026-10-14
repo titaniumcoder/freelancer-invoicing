@@ -8,16 +8,38 @@ Markers: ✅ done · 🚧 in progress · ⬜ not started
 
 ---
 
-## Phase 0 — Bootstrap ✅
+## Phase 0 — Bootstrap 🚧
 
-Get the repo ready to think in.
+Get the repo ready to think and build in.
 
-- ✅ README, roadmap, changelog (Keep a Changelog 1.1.0)
-- ✅ AGENTS.md — conventions carried over from pocket-cfo and adapted
-- ⬜ Go module skeleton: `cmd/` + `internal/` layout, one buildable binary
-- ⬜ CI: build + test on push
+- ✅ README, ROADMAP, CHANGELOG, AGENTS.md, ARCHITECTURE
+- ✅ Go module and a first serving binary
+- ✅ Deployment setup: Dockerfile, Fly (auto-stop, zero idle machines)
+- ✅ CI: build, test, vet and format check on push; deploys and releases on
+  version tags only
+- ⬜ Postgres database layer: schema and access for the records the pipeline
+  keeps, runnable locally for development and deployed on Neon.tech
 
-## Phase 1 — Contract intake ⬜
+## Phase 1 — Invoicing ⬜
+
+The reason this repo exists: the invoicing core, extended with its two input
+paths.
+
+- ⬜ Port the invoicing core from pocket-cfo (documents, rendering, money)
+- ⬜ Milestone path: free text + chat interface; the client's approval is
+  recorded in the chat and gates invoice creation
+- ⬜ Hourly path: scanned PDF timesheet as the invoice source
+- ⬜ Explicit non-goal held: no invoice is ever derived from Toggl data
+
+## Phase 2 — pocket-cfo integration ⬜
+
+Close the loop back to where invoicing came from.
+
+- ⬜ REST API over the service layer
+- ⬜ MCP surface for the agent side, mirroring pocket-cfo's agent-API pattern
+- ⬜ Point pocket-cfo at this app and remove/retire its invoicing half
+
+## Phase 3 — Contract intake ⬜
 
 The stage the repo is named for, and the reason invoicing needs a pipeline in
 the first place.
@@ -31,7 +53,7 @@ the first place.
 - ⬜ Chat-style refinement of the extraction (correct a misread budget, add a
   project) before confirming
 
-## Phase 2 — Tracking ⬜
+## Phase 4 — Tracking (Toggl) ⬜
 
 Where the work under a contract is measured.
 
@@ -41,21 +63,3 @@ Where the work under a contract is measured.
   know Toggl exists
 - ⬜ Standing view: budget used vs. budget available per project and
   milestone, hours spent, where each engagement stands
-
-## Phase 3 — Invoicing ⬜
-
-The extracted pocket-cfo core, extended with its two new input paths.
-
-- ⬜ Port the invoicing core from pocket-cfo (documents, rendering, money)
-- ⬜ Milestone path: free text + chat interface; the client's approval is
-  recorded in the chat and gates invoice creation
-- ⬜ Hourly path: scanned PDF timesheet as the invoice source
-- ⬜ Explicit non-goal held: no invoice is ever derived from Toggl data
-
-## Phase 4 — pocket-cfo integration ⬜
-
-Close the loop back to where invoicing came from.
-
-- ⬜ REST API over the service layer
-- ⬜ MCP surface for the agent side, mirroring pocket-cfo's agent-API pattern
-- ⬜ Point pocket-cfo at this app and remove/retire its invoicing half

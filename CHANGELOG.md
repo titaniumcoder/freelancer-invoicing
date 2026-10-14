@@ -29,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   published contract, whole API tooling (e.g. OpenAPI) instead of
   schema-generated types. The go-jsonschema exception and the `schema/`
   planned layout entry are gone
+- ROADMAP reordered around what matters first: Phase 0 (bootstrap) gains the
+  Postgres database layer (local development, deployed on Neon.tech), then
+  invoicing, pocket-cfo integration, contract intake, and Toggl tracking
+  last
 
 ### Deprecated
 
