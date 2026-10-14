@@ -38,6 +38,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3
   has compliance-mode WORM), PDF/A as readability not integrity, PAdES
   deferred, and the confidentiality rules for the document store
+- Document storage decided: AWS S3 with versioning and compliance-mode
+  Object Lock (WORM) instead of Tigris — a trust decision for long-term
+  storage; PDF/A is mandatory for the ten-year retention; signing deferred
+  with the two paths spelled out (platform-signed is easy, client-signed
+  means certificate integration)
 
 ### Deprecated
 

@@ -88,24 +88,25 @@ layered, cheapest layer first:
    address, so any mismatch between the stored hash and the served bytes is
    tampering, detected on every read. Standard library only
    (`crypto/sha256`).
-3. **Storage backstop.** The document bucket keeps object versioning and
-   snapshots enabled, so every write persists. Tigris (Fly's object storage,
-   billed on the same bill) supports versioning and snapshots but has no
-   Object Lock; AWS S3's compliance-mode Object Lock is the hard WORM
-   guarantee. At this project's volume (~1 GB over a ten-year retention
-   window) both cost rounding error money, so the choice is about complexity,
-   not price: start on Tigris, and the storage seam stays swappable so an
-   Object-Lock-capable archival bucket can be added when the SaaS stakes
-   make it worthwhile.
-4. **Sealing, when needed.** A detached Ed25519 signature over the stored
-   hash, verifiable offline, proves integrity even against storage-side
-   manipulation — with the honest limit that as long as the app holds the
-   key, it proves the chain, not non-repudiation. A PAdES signature inside
-   the PDF (candidate tooling: `digitorus/pdfsign`) is a deliberate,
-   deferred dependency, taken only if a client or authority demands one.
-5. **PDF/A is readability, not integrity.** Generating PDF/A-2b serves the
-   ten-year archive readability requirement; it does not make a document
-   tamper-proof. It is a detail of the rendering step, not a security layer.
+3. **Storage on AWS S3, not Tigris.** Long-term storage is a trust decision:
+   the documents go to AWS S3, where object versioning plus compliance-mode
+   Object Lock give a hard WORM guarantee — nobody, including the account
+   owner, can delete or overwrite a locked object before the retention ends
+   (set to cover the ten-year retention window). At this project's volume
+   (~1 GB over ten years) the cost is rounding error money; Object Lock
+   itself is a bucket feature, not a paid tier.
+4. **Sealing, when needed.** Signing is kept for later, and there are two
+   distinct paths when it comes: the platform signs (easy — an Ed25519 key
+   of the app, or a PAdES signature with a certificate the platform holds),
+   or the client signs (hard — certificate integration, key custody, HSM or
+   smartcard questions). Candidate tooling for the platform path exists
+   (`digitorus/pdfsign`); the decision is deferred until a client or
+   authority actually demands a signature.
+5. **PDF/A is mandatory.** The documents must stay readable for ten years,
+   and a lot changes in ten years — renderers, fonts, viewers. Generating
+   PDF/A-2b (or better) is therefore a requirement of the rendering step,
+   not an option. As stated: this is about long-term readability, not
+   tamper-proofing — the layers above handle integrity.
 
 Confidentiality is a separate requirement from immutability: nobody should be
 able to see or guess another party's invoices. Rules for the document store
