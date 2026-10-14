@@ -18,14 +18,19 @@ Get the repo ready to think and build in.
 - ✅ CI: build, test, vet and format check on push; deploys and releases on
   version tags only
 - ⬜ Postgres database layer: schema and access for the records the pipeline
-  keeps, runnable locally for development and deployed on Neon.tech
+  keeps, runnable locally for development and deployed on Neon.tech — with
+  Supabase kept in the comparison, since it offers the database and auth as
+  one bundle and that bundle has to beat Neon plus a separate auth service
 - ⬜ Evaluate login providers — managed first (self-hosting Keycloak or
-  Authentik is a distraction): Ory Network, Zitadel Cloud, Hanko Cloud,
-  Clerk, Auth0, Supabase Auth, Kinde
+  Authentik is a distraction): Neon Auth, Ory Network, Zitadel Cloud, Hanko
+  Cloud, Clerk, Auth0, Supabase Auth, Kinde. Neon Auth stores users and
+  sessions in the Neon database itself and branches with it — attractive,
+  but its SDKs are JS-first, so the Go fit over the REST API needs checking
 - ⬜ Evaluate billing for B2B and B2C in Europe (VAT, SEPA, cards, SCA) —
-  realistically Paddle vs Stripe: Paddle is the merchant of record and
-  handles VAT for B2B and B2C; Stripe is the processor and leaves tax
-  handling to the app, with more control in return
+  realistically Paddle vs Stripe, tilted toward Paddle: as the merchant of
+  record it handles VAT for B2B and B2C, and doing VAT oneself is exactly
+  the pain this project is not meant to be about; Stripe would put tax
+  handling back in the app
 - ⬜ Evaluate tracking, logs and statistics — Sentry for error tracking is
   the frontrunner (managed, EU data residency; self-hosting it would be a
   pain not worth taking); still to pick: product analytics (Plausible,

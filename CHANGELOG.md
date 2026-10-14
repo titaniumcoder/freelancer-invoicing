@@ -44,6 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   distraction), billing narrowed to Paddle vs Stripe (merchant of record vs
   processor), Sentry the error-tracking frontrunner; product analytics and
   logs still to pick
+- Neon Auth (managed Better Auth in the Neon database, branchable) joins the
+  login candidates; Supabase stays in the database comparison as the
+  database-plus-auth bundle; billing tilted toward Paddle since handling VAT
+  oneself is a pain the project avoids
 - docs/ARCHITECTURE.md "Immutable documents" section: render-once rule,
   SHA-256 stored with the invoice and embedded in the object key, Tigris
   versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3
