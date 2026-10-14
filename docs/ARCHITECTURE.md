@@ -20,9 +20,10 @@ over a REST + MCP API for external clients such as pocket-cfo.
    user confirms is created; nothing enters the system unreviewed.
 2. **Tracking.** Hours, developer rates and costs, rolled up per project,
    milestone and task, so the standing of every engagement is visible at a
-   glance. Tracking runs on Toggl, but strictly behind an internal
-   tracking-source interface — exactly one file knows Toggl exists, and the
-   source stays swappable.
+   glance. Tracking lives in the app natively — a timer and entries — with
+   Toggl available as an additional source; both sit strictly behind an
+   internal tracking-source interface, and exactly one file knows Toggl
+   exists.
 3. **Invoicing.** Invoices are never derived from tracking data. Two paths:
    milestone-based contracts are invoiced through free text plus a chat
    interface, and only after the client's approval has been recorded as a

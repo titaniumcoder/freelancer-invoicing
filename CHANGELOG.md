@@ -48,6 +48,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   login candidates; Supabase stays in the database comparison as the
   database-plus-auth bundle; billing tilted toward Paddle since handling VAT
   oneself is a pain the project avoids
+- ROADMAP Phase 5 reworked: native time tracking first (timer, entries,
+  rates), offline capture via PWA queue with append-only sync, Toggl demoted
+  to an additional source plus one-time import — the interface keeps both
+  swappable and the Toggl subscription can end once native covers usage
+- docs/ARCHITECTURE.md tracking paragraph matches: native tracker is the
+  primary source, Toggl an additional one, both behind the internal
+  tracking-source interface
 - docs/ARCHITECTURE.md "Immutable documents" section: render-once rule,
   SHA-256 stored with the invoice and embedded in the object key, Tigris
   versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3

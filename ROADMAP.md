@@ -84,13 +84,21 @@ the first place.
 - ⬜ Chat-style refinement of the extraction (correct a misread budget, add a
   project) before confirming
 
-## Phase 5 — Tracking (Toggl) ⬜
+## Phase 5 — Tracking ⬜
 
-Where the work under a contract is measured.
+Where the work under a contract is measured. Native first, Toggl as an
+additional source — the tracking-source interface makes both fit, and the
+Toggl subscription can end once the native tracker covers real usage.
 
 - ⬜ Define the tracking-source interface (hours, rates, costs, per project /
   milestone / task)
-- ⬜ Toggl implementation behind that interface — the only file allowed to
-  know Toggl exists
+- ⬜ Native tracker: timer, manual entries, per project / milestone / task,
+  billable flag and rates
+- ⬜ Offline capture: a PWA queue (IndexedDB) with client-generated entry IDs,
+  synced later — entries are append-only facts, so a conflict is a duplicate
+  to drop, not a merge to resolve
+- ⬜ Toggl as an additional source behind the same interface, plus a one-time
+  import of existing history
 - ⬜ Standing view: budget used vs. budget available per project and
-  milestone, hours spent, where each engagement stands
+  milestone, hours spent, where each engagement stands — native data by
+  default, imported hours marked as such
