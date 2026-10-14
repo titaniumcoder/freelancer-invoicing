@@ -62,3 +62,8 @@ conventions below apply across all of them.
 - **Simple, on purpose.** One freelancer, a handful of contracts a year, one
   writer: no locking, no multi-tenancy, no workflow engine. If a design
   looks suspiciously simple, that is the reason, not an oversight.
+- **Every push to `main` is a release.** Before pushing, `CHANGELOG.md`
+  (section `Unreleased`) and any docs the change touches are updated in the
+  same commit; the release workflow turns that section into a tagged GitHub
+  release. Versions are semver in major version zero while in alpha — see
+  `docs/release-process.md`.

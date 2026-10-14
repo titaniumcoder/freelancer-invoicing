@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Project bootstrap: README, ROADMAP, CHANGELOG, AGENTS.md
+- Deployment setup: Dockerfile, `fly.toml` (region `fra`, auto-stop with zero
+  minimum machines), and a GitHub Actions deploy workflow on push to `main`
+- [docs/installation.md](docs/installation.md) — how to run the app locally
+  with Go or Docker, and on Fly.io
+- Automatic releases: every push to `main` with changelog entries is tagged
+  and published as a GitHub release, with notes taken from the `Unreleased`
+  section of this file (see [docs/release-process.md](docs/release-process.md))
+- [docs/release-process.md](docs/release-process.md) — the release rules and
+  versioning scheme (major version zero while in alpha)
 
 ### Changed
 
