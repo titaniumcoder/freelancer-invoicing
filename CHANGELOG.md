@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - docs/ARCHITECTURE.md gains a "Data scheme" section as a TODO marker: the
   storage schema (contracts, milestones, approvals, invoices) will be
   documented there once it takes shape
+- GitHub issues as the working tracker: the roadmap is mirrored — six
+  milestones (the phases), one issue per open item (26 issues) — and the
+  `issue` skill describes the ritual: create, reference `(#N)`, close with
+  `Fixes #N`, tick the roadmap checkbox
+- Repository made public, with description and homepage set
 
 ### Changed
 

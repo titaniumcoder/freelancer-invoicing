@@ -59,8 +59,10 @@ convention and the architecture document disagree, fix one of them.
   looks suspiciously simple, that is the reason, not an oversight.
 - **Work is tracked in GitHub issues.** A non-trivial change starts with an
   issue; every commit belonging to it references the issue (`(#12)`), and the
-  commit that completes it closes it (`Fixes #12`). That gives the trail
-  issue → commits → tag → release without any extra bookkeeping.
+  commit that completes it closes it (`Fixes #12`). ROADMAP.md and GitHub
+  mirror each other — each phase is a milestone, each open item an issue —
+  and a closed roadmap issue ticks its checkbox. The ritual lives in the
+  `issue` skill (`.agents/skills/issue/SKILL.md`).
 - **Changelog and docs travel with the change.** Every change updates
   `CHANGELOG.md` (section `Unreleased`) and any doc it touches, in the same
   commit.

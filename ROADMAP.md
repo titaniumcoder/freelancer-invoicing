@@ -6,6 +6,10 @@ time. Phases are sequential — each builds on the one before it.
 
 Markers: ✅ done · 🚧 in progress · ⬜ not started
 
+This roadmap is mirrored on GitHub: each phase is a milestone, each open
+item is an issue under that milestone. The issue tracker is the live state;
+this file is the written plan.
+
 ---
 
 ## Phase 0 — Bootstrap 🚧
