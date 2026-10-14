@@ -1,6 +1,6 @@
 ---
 name: release
-description: Propose and cut a tagged release — convert the CHANGELOG Unreleased section into a version section, tag it, and publish the GitHub release with those notes. Use when the user asks to release, tag, or publish a version. Never tag or push a release without this skill's confirmation step.
+description: Propose and cut a tagged release — derive the version from the commits since the last tag per Conventional Commits, convert the CHANGELOG Unreleased section into a version section, and publish the GitHub release with those notes. Use when the user asks to release, tag, or publish a version. Never tag or push a release without this skill's confirmation step.
 ---
 
 # release
@@ -8,7 +8,7 @@ description: Propose and cut a tagged release — convert the CHANGELOG Unreleas
 Releases are tags. A push to `main` never releases and never deploys; a pushed
 `v*` tag is what triggers the Deploy workflow (tests run first, then Fly) and
 what the GitHub release hangs off. Never tag or push a release without the
-confirmation step in Phase 3 — a tag is a visible, hard-to-reverse action.
+confirmation step in Phase 2 — a tag is a visible, hard-to-reverse action.
 
 ## Phase 1 — Gather state
 
@@ -20,17 +20,32 @@ confirmation step in Phase 3 — a tag is a visible, hard-to-reverse action.
 3. Precondition: `CHANGELOG.md` has entries under `Unreleased`, and every doc
    the changes touched is updated. If not, that belongs to the change — make
    it happen first.
+4. Find the commit range. The last tag is `git describe --tags --abbrev=0`;
+   with no tags yet, the range is the entire history. The range for version
+   analysis and for the proposal summary is `<last-tag>..HEAD`.
 
-## Phase 2 — Propose
+## Phase 2 — Derive the version from the commits, then confirm
 
-1. Version: read the last `v*` tag (`git tag --list 'v*' --sort=-v:refname |
-   head -1`; none means `0.0.0`). Patch bump by default; if the Unreleased
-   section contains a `<!-- minor -->` marker, bump the minor instead
-   (removing the marker). Versions stay in semver major version zero
-   (`0.y.z`) while the project is in alpha.
-2. Show the proposal: the version and the `Unreleased` entries as they will
-   appear in the release notes.
-3. Ask for explicit confirmation. No confirmation, no tag — say so and stop.
+The version is read off the commits, never asked for. Categorize every commit
+in the range by its subject per
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
+
+- `feat:` / `feat(scope):` → **minor** bump
+- Any type with `!` before the colon (`feat!:`, `fix!:`, ...), or a commit
+  whose full body (`git log <range> --pretty=format:'%B'`) contains a
+  `BREAKING CHANGE:` footer → **major** bump
+- Anything else (`fix:`, `docs:`, `chore:`, `ci:`, `refactor:`, `test:`, or
+  no recognized prefix) → no bump signal by itself
+
+The highest signal wins: any breaking commit → major; else any feature
+commit → minor; else patch. While the project is in major version zero
+(`0.y.z`), a major bump raises the minor instead — pre-1.0 never jumps to
+`1.0.0` unless the user names it.
+
+Show the proposal: the derived version, the categorized commits (short hash
++ subject, one per line), and the `Unreleased` changelog entries as they will
+appear in the release notes. Ask for explicit confirmation; without it, no
+tag — say so and stop.
 
 ## Phase 3 — Cut
 

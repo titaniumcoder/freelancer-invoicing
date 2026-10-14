@@ -21,7 +21,12 @@ such as [pocket-cfo](https://github.com/titaniumcoder/pocket-cfo).
   the stages in detail, the principles, the planned layout
 - [docs/installation.md](docs/installation.md) — run it locally or on Fly.io
 - [ROADMAP.md](ROADMAP.md) — the phases, in order
-- [CHANGELOG.md](CHANGELOG.md) — what has changed, release by release
+- [CHANGELOG.md](CHANGELOG.md) — what has changed, release by release, in
+  [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format
+
+Commit messages on `main` follow
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) —
+they are what a release's version is derived from.
 
 ## Status
 

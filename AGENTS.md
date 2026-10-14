@@ -62,13 +62,18 @@ convention and the architecture document disagree, fix one of them.
 - **Changelog and docs travel with the change.** Every change updates
   `CHANGELOG.md` (section `Unreleased`) and any doc it touches, in the same
   commit.
+- **Commit messages on `main` follow Conventional Commits.**
+  `feat: ...` / `fix: ...` / `feat!: ...` (or a `BREAKING CHANGE:` footer),
+  plus the issue reference (`(#12)`, `Fixes #12`). The release skill reads
+  these to derive the next version — `feat` means minor, a breaking marker
+  means major, everything else is patch-level. While in major version zero,
+  a breaking bump raises the minor instead.
 - **Releases are tags, cut manually via the `release` skill.** A push to
   `main` never releases and never deploys. When a release is due, the agent
-  follows `.agents/skills/release/SKILL.md`: it proposes the version and the
-  notes from the `Unreleased` changelog section, and only after explicit
-  confirmation converts the section, tags `vX.Y.Z`, and pushes — the tag is
-  what runs the Deploy workflow (tests first, then Fly) and what the GitHub
-  release hangs off. Patch bump by default; a `<!-- minor -->` marker in
-  `Unreleased` bumps the minor. Versions are semver in major version zero
-  while in alpha (`0.0.x` now). How other projects cut releases is their
-  problem.
+  follows `.agents/skills/release/SKILL.md`: it derives the version from the
+  commits since the last tag, shows the proposal built from the
+  `Unreleased` changelog section, and only after explicit confirmation
+  converts the section, tags `vX.Y.Z`, and pushes — the tag is what runs
+  the Deploy workflow (tests first, then Fly) and what the GitHub release
+  hangs off. Versions are semver in major version zero while in alpha
+  (`0.0.x` now). How other projects cut releases is their problem.

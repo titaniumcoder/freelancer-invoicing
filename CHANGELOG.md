@@ -9,7 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Conventional Commits for messages on `main`; the release version is now
+  derived from them — `feat` means minor, a breaking marker means major,
+  everything else is patch-level
+
 ### Changed
+
+- README documentation section links the changelog format and the commit
+  convention; the release skill derives the version from commits instead of
+  a marker in the changelog
 
 ### Deprecated
 
