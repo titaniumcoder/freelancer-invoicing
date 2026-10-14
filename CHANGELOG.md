@@ -40,6 +40,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for B2B and B2C in Europe, and tracking/logs/statistics — ten
   GDPR-compatible candidates each — followed by implementing the chosen
   platforms
+- Evaluation stance sharpened: managed services only (self-hosting is a
+  distraction), billing narrowed to Paddle vs Stripe (merchant of record vs
+  processor), Sentry the error-tracking frontrunner; product analytics and
+  logs still to pick
 - docs/ARCHITECTURE.md "Immutable documents" section: render-once rule,
   SHA-256 stored with the invoice and embedded in the object key, Tigris
   versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3
