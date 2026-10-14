@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README documentation section links the changelog format and the commit
   convention; the release skill derives the version from commits instead of
   a marker in the changelog
+- docs/installation.md is for running the app locally only; the Fly deploy
+  instructions moved out — deploys are the GitHub Actions' job on a release
+  tag, never a manual step
 
 ### Deprecated
 
