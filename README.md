@@ -83,9 +83,8 @@ In development, deliberately at a slow pace. See
 [ROADMAP.md](ROADMAP.md) for the phases and
 [CHANGELOG.md](CHANGELOG.md) for what has changed so far.
 
-Every push to `main` is automatically tagged and released (see
-[docs/release-process.md](docs/release-process.md) for how that works and
-[docs/installation.md](docs/installation.md) for how to run the app yourself).
+Every push to `main` is automatically tagged and released; running the app
+locally is covered in [docs/installation.md](docs/installation.md).
 
 ## License
 

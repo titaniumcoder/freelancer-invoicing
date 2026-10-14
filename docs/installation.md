@@ -40,6 +40,3 @@ Automatic deploy: every push to `main` triggers the deploy workflow in
 [.github/workflows/fly-deploy.yml](../.github/workflows/fly-deploy.yml). This
 requires a `FLY_API_TOKEN` secret on the GitHub repository (create one with
 `fly tokens create -a freelancer-invoicing`).
-
-Releases are handled separately — see
-[release-process.md](release-process.md).

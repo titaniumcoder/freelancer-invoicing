@@ -30,11 +30,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   with Go or Docker, and on Fly.io
 - Automatic releases: every push to `main` with changelog entries is tagged
   and published as a GitHub release, with notes taken from the `Unreleased`
-  section of this file (see [docs/release-process.md](docs/release-process.md))
-- [docs/release-process.md](docs/release-process.md) — the release rules and
-  versioning scheme (major version zero while in alpha)
+  section of this file
 
 ### Changed
+
+- Release rules moved from `docs/release-process.md` into `AGENTS.md`:
+  releasing is a convention the agent follows, not user-facing documentation.
+  How others solve releases is their problem.
 
 ### Deprecated
 

@@ -62,8 +62,14 @@ conventions below apply across all of them.
 - **Simple, on purpose.** One freelancer, a handful of contracts a year, one
   writer: no locking, no multi-tenancy, no workflow engine. If a design
   looks suspiciously simple, that is the reason, not an oversight.
-- **Every push to `main` is a release.** Before pushing, `CHANGELOG.md`
-  (section `Unreleased`) and any docs the change touches are updated in the
-  same commit; the release workflow turns that section into a tagged GitHub
-  release. Versions are semver in major version zero while in alpha — see
-  `docs/release-process.md`.
+- **Every push to `main` is a release.** The agent owns the process, not a
+  document: before pushing, update `CHANGELOG.md` (section `Unreleased`) and
+  every doc the change touches, in the same commit. The workflow in
+  `.github/workflows/release.yml` does the rest — it moves `Unreleased` into
+  a dated section, tags `vX.Y.Z`, and publishes a GitHub release whose notes
+  are exactly that section. Version bumps are patch by default; a
+  `<!-- minor -->` marker in `Unreleased` bumps the minor. Versions are semver
+  in major version zero while in alpha (`0.0.x` now, `0.1.0` at the first
+  recognizable feature milestone, `1.0.0` only once the pipeline is complete
+  and stable). This rule lives here, not in `docs/`: how other projects cut
+  releases is their problem, and this one is carried out by the agent.
