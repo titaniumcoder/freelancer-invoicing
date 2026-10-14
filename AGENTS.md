@@ -1,16 +1,9 @@
 # AGENTS.md
 
-This repo has no `ARCHITECTURE.md` yet; until one exists, this file and
-`README.md` together are the canonical description of the design. When
-`ARCHITECTURE.md` appears, design content moves there and this file goes back
-to recording only conventions that aren't obvious from the code itself.
-
-## What this is
-
-The contract-to-invoice pipeline extracted from pocket-cfo: contract intake →
-tracking → invoicing, with the invoicing core served back to pocket-cfo over a
-REST + MCP API. `README.md` states the three stages and the principles; the
-conventions below apply across all of them.
+The design of this repo lives in `docs/ARCHITECTURE.md` — what the system is,
+the three stages, the principles and the planned layout. This file records
+only the conventions that aren't obvious from the code itself; when a
+convention and the architecture document disagree, fix one of them.
 
 ## Conventions
 
@@ -62,14 +55,14 @@ conventions below apply across all of them.
 - **Simple, on purpose.** One freelancer, a handful of contracts a year, one
   writer: no locking, no multi-tenancy, no workflow engine. If a design
   looks suspiciously simple, that is the reason, not an oversight.
-- **Every push to `main` is a release.** The agent owns the process, not a
-  document: before pushing, update `CHANGELOG.md` (section `Unreleased`) and
-  every doc the change touches, in the same commit. The workflow in
-  `.github/workflows/release.yml` does the rest — it moves `Unreleased` into
+- **Changelog and docs travel with the change.** Every change updates
+  `CHANGELOG.md` (section `Unreleased`) and any doc it touches, in the same
+  commit.
+- **Releases are manual and agent-driven.** Pushing alone releases nothing.
+  When a release is due, the agent follows the `release` skill
+  (`.agents/skills/release/SKILL.md`): it turns the `Unreleased` section into
   a dated section, tags `vX.Y.Z`, and publishes a GitHub release whose notes
-  are exactly that section. Version bumps are patch by default; a
-  `<!-- minor -->` marker in `Unreleased` bumps the minor. Versions are semver
-  in major version zero while in alpha (`0.0.x` now, `0.1.0` at the first
-  recognizable feature milestone, `1.0.0` only once the pipeline is complete
-  and stable). This rule lives here, not in `docs/`: how other projects cut
-  releases is their problem, and this one is carried out by the agent.
+  are exactly that section. Patch bump by default; a `<!-- minor -->` marker
+  in `Unreleased` bumps the minor. Versions are semver in major version zero
+  while in alpha (`0.0.x` now). How other projects cut releases is their
+  problem.
