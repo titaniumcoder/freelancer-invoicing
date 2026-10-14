@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.0.3] - 2026-10-14
+
+### Added
+
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — the design document: the
   three stages, principles, planned layout, and where the system is going
   (SaaS: database, object storage)
@@ -17,9 +31,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- README slimmed down: duplicated descriptions removed, tech stack stated
+  without internal references, deployed app linked
+
 ### Deprecated
 
 ### Removed
+
+- The automatic release workflow and its script; tagging and releasing are
+  manual and agent-driven
 
 ### Fixed
 
@@ -34,15 +54,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Release rules moved from `docs/release-process.md` into `AGENTS.md`:
   releasing is a convention the agent follows, not user-facing documentation.
   How others solve releases is their problem.
-- README slimmed down: duplicated descriptions removed, tech stack stated
-  without internal references, deployed app linked
 
 ### Deprecated
 
 ### Removed
-
-- The automatic release workflow and its script; tagging and releasing are
-  manual and agent-driven
 
 ### Fixed
 
