@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- README reduced to a landing document: what the app is, then links to
+  architecture, installation, roadmap and changelog — no content repeated
+
 ### Deprecated
 
 ### Removed
@@ -33,8 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - README slimmed down: duplicated descriptions removed, tech stack stated
   without internal references, deployed app linked
-- README reduced to a landing document: what the app is, then links to
-  architecture, installation, roadmap and changelog — no content repeated
 
 ### Deprecated
 
