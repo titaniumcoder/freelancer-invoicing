@@ -22,8 +22,13 @@ convention and the architecture document disagree, fix one of them.
     SDK-free beside the REST handlers so the two adapters cannot drift.
   - an OpenAI-compatible client for the LLM calls (contract parsing, scanned
     PDF reading), same three rules.
-  - `go-jsonschema` as a dev-time `tool` dependency to generate Go structs
-    from `schemas/*.json` — never imported by runtime code.
+  - an OpenAI-compatible client for the LLM calls (contract parsing, scanned
+    PDF reading), same three rules.
+- **No JSON Schema in this project.** Records live in a database and
+  documents are PDFs — JSON exists only at the API boundary, where hand-
+  written types serve fine. If the API ever needs a published contract, take
+  whole API tooling (e.g. OpenAPI) in one piece; do not introduce
+  schema-generated types.
 - **The code explains itself; comments do not.** Go code here carries no
   comments. When a block needs explaining, extract it into a function whose
   name is the explanation, or name the constant, or split the function until
@@ -46,9 +51,6 @@ convention and the architecture document disagree, fix one of them.
   totals — computed on read, never persisted, so nothing can disagree with
   its own inputs.
 - **Money is integer minor units.** `1020000` = 10 200,00 €. No floats.
-- **Schema documents are `go:embed`ed**, never read from disk at runtime,
-  and every structured data shape gets generated Go types via `go-jsonschema`
-  — never a hand-written struct for a data shape.
 - **Persistent state changes go through git.** Whatever the storage shape
   turns out to be, a change is a commit with an author and a date; git
   history is the audit trail, not an appended log field.

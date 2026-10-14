@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - docs/installation.md is for running the app locally only; the Fly deploy
   instructions moved out — deploys are the GitHub Actions' job on a release
   tag, never a manual step
+- No JSON Schema in this project: records live in a database, documents are
+  PDFs, and JSON appears only at the API boundary; if the API needs a
+  published contract, whole API tooling (e.g. OpenAPI) instead of
+  schema-generated types. The go-jsonschema exception and the `schema/`
+  planned layout entry are gone
 
 ### Deprecated
 

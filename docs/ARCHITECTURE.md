@@ -58,7 +58,6 @@ internal/
   tracking/                the Toggl interface and its one implementation
   invoicing/               the invoicing core
   api/                     REST + MCP adapters over the service layer
-  schema/                  generated types for structured documents
 static/
 templates/
 ```
