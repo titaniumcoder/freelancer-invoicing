@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Release rules moved from `docs/release-process.md` into `AGENTS.md`:
+  releasing is a convention the agent follows, not user-facing documentation.
+  How others solve releases is their problem.
+
 ### Deprecated
 
 ### Removed
@@ -33,10 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   section of this file
 
 ### Changed
-
-- Release rules moved from `docs/release-process.md` into `AGENTS.md`:
-  releasing is a convention the agent follows, not user-facing documentation.
-  How others solve releases is their problem.
 
 ### Deprecated
 
