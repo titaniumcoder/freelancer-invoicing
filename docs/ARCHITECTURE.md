@@ -65,6 +65,13 @@ templates/
 
 The layout is planned, not built; it will be amended as stages land.
 
+## Data scheme
+
+TODO. The storage schema for the records the pipeline keeps — contracts,
+projects, milestones, recorded approvals, invoices — will be documented here
+once it takes shape. Until then, nothing is fixed: the shape is still being
+discovered, and nothing calculable is stored in any case (see Principles).
+
 ## Where the system is going
 
 The pipeline currently serves one freelancer, but it grows into a SaaS. That

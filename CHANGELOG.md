@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Conventional Commits for messages on `main`; the release version is now
   derived from them — `feat` means minor, a breaking marker means major,
   everything else is patch-level
+- docs/ARCHITECTURE.md gains a "Data scheme" section as a TODO marker: the
+  storage schema (contracts, milestones, approvals, invoices) will be
+  documented there once it takes shape
 
 ### Changed
 
