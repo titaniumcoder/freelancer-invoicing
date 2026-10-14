@@ -27,7 +27,9 @@ these steps in order.
    sits there and published sections are untouched.
 4. **Commit, tag, push.** Commit the changelog as
    `chore(release): vX.Y.Z`, create tag `vX.Y.Z` on that commit, push `main`
-   and the tag.
+   and the tag. Before tagging, re-read the file: it must already contain the
+   new `## [X.Y.Z]` section and an empty Unreleased — tagging without the
+   conversion leaves the file out of sync with the published release.
 5. **GitHub release.** `gh release create vX.Y.Z --title vX.Y.Z
    --notes-file <file>` where the notes are exactly the new changelog
    section — the changes since the last release, nothing more.
