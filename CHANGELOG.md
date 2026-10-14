@@ -33,6 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Postgres database layer (local development, deployed on Neon.tech), then
   invoicing, pocket-cfo integration, contract intake, and Toggl tracking
   last
+- ROADMAP gains a dashboard phase after invoicing: a mini CRM with clients,
+  earnings, open points and the contract pipeline; pocket-cfo integration,
+  contract intake and tracking shift back one phase each
 - docs/ARCHITECTURE.md "Immutable documents" section: render-once rule,
   SHA-256 stored with the invoice and embedded in the object key, Tigris
   versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3

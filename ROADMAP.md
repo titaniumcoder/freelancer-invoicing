@@ -31,7 +31,20 @@ paths.
 - ⬜ Hourly path: scanned PDF timesheet as the invoice source
 - ⬜ Explicit non-goal held: no invoice is ever derived from Toggl data
 
-## Phase 2 — pocket-cfo integration ⬜
+## Phase 2 — Dashboard ⬜
+
+A central view — a mini CRM for the one freelancer. Built on the invoicing
+core's data, and extended as later phases land (the pipeline column fills up
+once contract intake exists).
+
+- ⬜ Clients: the list, contact data, the standing of every client at a glance
+- ⬜ Earnings: revenue per client, per month, per year — computed on read,
+  never stored (see Principles)
+- ⬜ Open points: unpaid and overdue invoices, open approvals, drafts waiting
+  to be sent
+- ⬜ Pipeline: what is coming — contracts in progress, expected volume
+
+## Phase 3 — pocket-cfo integration ⬜
 
 Close the loop back to where invoicing came from.
 
@@ -39,7 +52,7 @@ Close the loop back to where invoicing came from.
 - ⬜ MCP surface for the agent side, mirroring pocket-cfo's agent-API pattern
 - ⬜ Point pocket-cfo at this app and remove/retire its invoicing half
 
-## Phase 3 — Contract intake ⬜
+## Phase 4 — Contract intake ⬜
 
 The stage the repo is named for, and the reason invoicing needs a pipeline in
 the first place.
@@ -53,7 +66,7 @@ the first place.
 - ⬜ Chat-style refinement of the extraction (correct a misread budget, add a
   project) before confirming
 
-## Phase 4 — Tracking (Toggl) ⬜
+## Phase 5 — Tracking (Toggl) ⬜
 
 Where the work under a contract is measured.
 
