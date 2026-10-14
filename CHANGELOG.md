@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.0.1] - 2026-10-14
+
+### Added
+
 - Project bootstrap: README, ROADMAP, CHANGELOG, AGENTS.md
 - Deployment setup: Dockerfile, `fly.toml` (region `fra`, auto-stop with zero
   minimum machines), and a GitHub Actions deploy workflow on push to `main`
@@ -29,3 +43,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Security
+
