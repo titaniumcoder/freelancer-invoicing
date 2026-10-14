@@ -33,6 +33,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Postgres database layer (local development, deployed on Neon.tech), then
   invoicing, pocket-cfo integration, contract intake, and Toggl tracking
   last
+- docs/ARCHITECTURE.md "Immutable documents" section: render-once rule,
+  SHA-256 stored with the invoice and embedded in the object key, Tigris
+  versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3
+  has compliance-mode WORM), PDF/A as readability not integrity, PAdES
+  deferred, and the confidentiality rules for the document store
 
 ### Deprecated
 

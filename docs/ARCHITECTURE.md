@@ -71,6 +71,55 @@ projects, milestones, recorded approvals, invoices — will be documented here
 once it takes shape. Until then, nothing is fixed: the shape is still being
 discovered, and nothing calculable is stored in any case (see Principles).
 
+## Immutable documents
+
+An issued invoice must not change — not because someone might edit a file,
+but because the record it attests must stay verifiable for years (German
+GoBD expects ten-year retention with integrity assurance; documented internal
+controls are accepted, a qualified signature is not mandatory). The design is
+layered, cheapest layer first:
+
+1. **Rendered once, never mutated.** An invoice PDF is written exactly once,
+   at creation. A correction produces a new document (a storno or revision);
+   the old file is never touched. This is an application rule, not a feature.
+2. **Hash as the address.** The SHA-256 of the PDF bytes is stored with the
+   invoice record in Postgres, and the object key contains that hash
+   (`invoices/<hash>.pdf`). An overwritten object would move to a different
+   address, so any mismatch between the stored hash and the served bytes is
+   tampering, detected on every read. Standard library only
+   (`crypto/sha256`).
+3. **Storage backstop.** The document bucket keeps object versioning and
+   snapshots enabled, so every write persists. Tigris (Fly's object storage,
+   billed on the same bill) supports versioning and snapshots but has no
+   Object Lock; AWS S3's compliance-mode Object Lock is the hard WORM
+   guarantee. At this project's volume (~1 GB over a ten-year retention
+   window) both cost rounding error money, so the choice is about complexity,
+   not price: start on Tigris, and the storage seam stays swappable so an
+   Object-Lock-capable archival bucket can be added when the SaaS stakes
+   make it worthwhile.
+4. **Sealing, when needed.** A detached Ed25519 signature over the stored
+   hash, verifiable offline, proves integrity even against storage-side
+   manipulation — with the honest limit that as long as the app holds the
+   key, it proves the chain, not non-repudiation. A PAdES signature inside
+   the PDF (candidate tooling: `digitorus/pdfsign`) is a deliberate,
+   deferred dependency, taken only if a client or authority demands one.
+5. **PDF/A is readability, not integrity.** Generating PDF/A-2b serves the
+   ten-year archive readability requirement; it does not make a document
+   tamper-proof. It is a detail of the rendering step, not a security layer.
+
+Confidentiality is a separate requirement from immutability: nobody should be
+able to see or guess another party's invoices. Rules for the document store
+and the service layer:
+
+- The bucket is private — no public access, no directory listing; all access
+  goes through the service layer, which checks ownership per record.
+- Object keys are unguessable: random IDs (or the content hash), never
+  sequential numbers.
+- Direct downloads, when needed, go through short-lived presigned URLs only.
+- Every record is scoped to its owner from day one — the multi-tenancy the
+  simplicity principle rules out for workflows is not an excuse for one
+  tenant's data leaking into another's.
+
 ## Where the system is going
 
 The pipeline currently serves one freelancer, but it grows into a SaaS. That
