@@ -80,6 +80,8 @@ can be added without reworking the core.
 Deployed on Fly.io at `freelancer-invoicing.fly.dev`, region `fra`, one
 shared-cpu-1x machine with 256 MB. The machine sleeps when idle
 (`min_machines_running = 0`, auto-stop) and wakes on the first request.
-Deploys happen automatically on every push to `main`
-([.github/workflows/fly-deploy.yml](../.github/workflows/fly-deploy.yml)).
-How to run it locally: [installation.md](installation.md).
+Every push to `main` runs the Build workflow (build, vet, test, format);
+nothing publishes or deploys from it. Deploys happen only on a version tag
+push ([.github/workflows/deploy.yml](../.github/workflows/deploy.yml)), and
+only after the same checks pass there. How to run it locally:
+[installation.md](installation.md).

@@ -36,7 +36,9 @@ Manual deploy:
 fly deploy --remote-only
 ```
 
-Automatic deploy: every push to `main` triggers the deploy workflow in
-[.github/workflows/fly-deploy.yml](../.github/workflows/fly-deploy.yml). This
-requires a `FLY_API_TOKEN` secret on the GitHub repository (create one with
-`fly tokens create -a freelancer-invoicing`).
+Automatic deploy: pushing a version tag (`v*`) triggers the deploy workflow in
+[.github/workflows/deploy.yml](../.github/workflows/deploy.yml), which runs
+the build, vet, test and formatting checks first and only then deploys.
+Pushes to `main` run the same checks without deploying. This requires a
+`FLY_API_TOKEN` secret on the GitHub repository (create one with `fly tokens
+create -a freelancer-invoicing`).

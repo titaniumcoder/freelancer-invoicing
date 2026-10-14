@@ -9,10 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `.agents/skills/release` — footgun note added: changelog edits must target
-  the Unreleased section, not the released sections below it
+- CI build workflow: build, test, vet and gofmt check on every push to
+  `main` and every pull request
+- GitHub issues as the tracking convention: non-trivial changes start with
+  an issue, commits reference it, the completing commit closes it
 
 ### Changed
+
+- Releases and deploys are tag-based: a pushed `v*` tag runs tests first and
+  only then deploys to Fly.io; pushes to `main` never release or deploy
+- `.agents/skills/release` reworked for the tag flow: it proposes version
+  and notes, and tags only after explicit confirmation
 
 ### Deprecated
 

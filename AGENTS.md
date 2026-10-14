@@ -55,14 +55,20 @@ convention and the architecture document disagree, fix one of them.
 - **Simple, on purpose.** One freelancer, a handful of contracts a year, one
   writer: no locking, no multi-tenancy, no workflow engine. If a design
   looks suspiciously simple, that is the reason, not an oversight.
+- **Work is tracked in GitHub issues.** A non-trivial change starts with an
+  issue; every commit belonging to it references the issue (`(#12)`), and the
+  commit that completes it closes it (`Fixes #12`). That gives the trail
+  issue → commits → tag → release without any extra bookkeeping.
 - **Changelog and docs travel with the change.** Every change updates
   `CHANGELOG.md` (section `Unreleased`) and any doc it touches, in the same
   commit.
-- **Releases are manual and agent-driven.** Pushing alone releases nothing.
-  When a release is due, the agent follows the `release` skill
-  (`.agents/skills/release/SKILL.md`): it turns the `Unreleased` section into
-  a dated section, tags `vX.Y.Z`, and publishes a GitHub release whose notes
-  are exactly that section. Patch bump by default; a `<!-- minor -->` marker
-  in `Unreleased` bumps the minor. Versions are semver in major version zero
+- **Releases are tags, cut manually via the `release` skill.** A push to
+  `main` never releases and never deploys. When a release is due, the agent
+  follows `.agents/skills/release/SKILL.md`: it proposes the version and the
+  notes from the `Unreleased` changelog section, and only after explicit
+  confirmation converts the section, tags `vX.Y.Z`, and pushes — the tag is
+  what runs the Deploy workflow (tests first, then Fly) and what the GitHub
+  release hangs off. Patch bump by default; a `<!-- minor -->` marker in
+  `Unreleased` bumps the minor. Versions are semver in major version zero
   while in alpha (`0.0.x` now). How other projects cut releases is their
   problem.
