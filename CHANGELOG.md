@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.0.5] - 2026-10-14
+
+### Added
+
 - CI build workflow: build, test, vet and gofmt check on every push to
   `main` and every pull request
 - GitHub issues as the tracking convention: non-trivial changes start with
