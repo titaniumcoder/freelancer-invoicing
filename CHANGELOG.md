@@ -53,6 +53,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3
   has compliance-mode WORM), PDF/A as readability not integrity, PAdES
   deferred, and the confidentiality rules for the document store
+- Immutable-documents layer 1 refined to the pocket-cfo model: invoices live
+  as freely editable drafts until issued; issuing renders the PDF once and
+  freezes the record; afterwards only storno/revision documents, with a
+  documented reissue as the exceptional escape hatch
 - Document storage decided: AWS S3 with versioning and compliance-mode
   Object Lock (WORM) instead of Tigris — a trust decision for long-term
   storage; PDF/A is mandatory for the ten-year retention; signing deferred

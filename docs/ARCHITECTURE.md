@@ -79,9 +79,14 @@ GoBD expects ten-year retention with integrity assurance; documented internal
 controls are accepted, a qualified signature is not mandatory). The design is
 layered, cheapest layer first:
 
-1. **Rendered once, never mutated.** An invoice PDF is written exactly once,
-   at creation. A correction produces a new document (a storno or revision);
-   the old file is never touched. This is an application rule, not a feature.
+1. **Draft until issued, rendered once at issue.** Carried over from
+   pocket-cfo, where it worked in practice: an invoice starts as a draft that
+   can be changed as often as needed — nothing is immutable while it is a
+   draft, and no PDF exists yet. Issuing renders the PDF exactly once and
+   freezes the record. After that, corrections are new documents (a storno
+   or a revision); the escape hatch for an issued document that is truly
+   wrong is a documented reissue — an exceptional, audited act, needed
+   exactly once in pocket-cfo's history.
 2. **Hash as the address.** The SHA-256 of the PDF bytes is stored with the
    invoice record in Postgres, and the object key contains that hash
    (`invoices/<hash>.pdf`). An overwritten object would move to a different
