@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `.agents/skills/release` — footgun note added: changelog edits must target
+  the Unreleased section, not the released sections below it
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.0.4] - 2026-10-14
+
+### Added
+
 ### Changed
 
 - README reduced to a landing document: what the app is, then links to

@@ -20,6 +20,11 @@ these steps in order.
    `## [X.Y.Z] - <today, UTC>` placed after the Unreleased section, and
    restore the empty Unreleased skeleton (Added / Changed / Deprecated /
    Removed / Fixed / Security).
+   **Footgun:** after a release, `Unreleased` is empty, so a changelog edit
+   whose context matches section headers can land in the released section
+   below instead. When adding an entry, always target the text right under
+   `## [Unreleased]` and re-read the file afterwards to confirm the entry
+   sits there and published sections are untouched.
 4. **Commit, tag, push.** Commit the changelog as
    `chore(release): vX.Y.Z`, create tag `vX.Y.Z` on that commit, push `main`
    and the tag.
