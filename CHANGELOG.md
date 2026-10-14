@@ -36,6 +36,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ROADMAP gains a dashboard phase after invoicing: a mini CRM with clients,
   earnings, open points and the contract pipeline; pocket-cfo integration,
   contract intake and tracking shift back one phase each
+- Phase 0 gains the SaaS groundwork as evaluations: login providers, billing
+  for B2B and B2C in Europe, and tracking/logs/statistics — ten
+  GDPR-compatible candidates each — followed by implementing the chosen
+  platforms
 - docs/ARCHITECTURE.md "Immutable documents" section: render-once rule,
   SHA-256 stored with the invoice and embedded in the object key, Tigris
   versioning as backstop (Object Lock later if SaaS stakes demand it, AWS S3

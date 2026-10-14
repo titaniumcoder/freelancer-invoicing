@@ -19,6 +19,16 @@ Get the repo ready to think and build in.
   version tags only
 - ⬜ Postgres database layer: schema and access for the records the pipeline
   keeps, runnable locally for development and deployed on Neon.tech
+- ⬜ Evaluate login providers — GDPR-compatible candidates: Ory, Zitadel,
+  Hanko, Keycloak, Authentik, Stack Auth, Supabase Auth, Clerk, Auth0, Kinde
+- ⬜ Evaluate billing for B2B and B2C in Europe (VAT, SEPA, cards, SCA) —
+  GDPR-compatible candidates: Stripe, Paddle, Mollie, Adyen, GoCardless,
+  Lago, Kill Bill, Chargebee, Payrexx, Lemon Squeezy
+- ⬜ Evaluate tracking, logs and statistics — GDPR-compatible candidates:
+  Plausible, Matomo, Pirsch, Simple Analytics, Umami, PostHog, Better Stack,
+  Grafana Cloud, Sentry, SigNoz
+- ⬜ Implement whatever platforms the evaluations chose: login, billing,
+  tracking and logs in the app
 
 ## Phase 1 — Invoicing ⬜
 
